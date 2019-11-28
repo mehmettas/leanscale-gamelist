@@ -25,7 +25,7 @@
                   android:right="1dp"
                   android:left="1dp">
                 <shape>
-                    <solid android:color="@color/negative"/>
+                    <solid android:color="@color/orange"/>
                     <corners android:radius="6dip"/>
                 </shape>
             </item>
