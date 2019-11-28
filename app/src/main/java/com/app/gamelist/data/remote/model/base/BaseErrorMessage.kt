@@ -1,4 +1,4 @@
-package com.mehmettas.cent.data.remote.model.base
+package com.app.gamelist.data.remote.model.base
 
 import com.google.gson.annotations.SerializedName
 

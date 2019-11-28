@@ -1,8 +1,8 @@
 package com.app.gamelist.data.remote.network
 
 import android.util.Log
+import com.app.gamelist.data.remote.model.base.BaseErrorMessage
 import com.google.gson.Gson
-import com.mehmettas.cent.data.remote.model.base.BaseErrorMessage
 import okhttp3.ResponseBody
 import retrofit2.HttpException
 import java.io.IOException
