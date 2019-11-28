@@ -2,6 +2,7 @@ package com.app.gamelist
 
 import android.app.Application
 import android.content.Context
+import com.app.gamelist.di.appModule
 import org.koin.android.ext.android.startKoin
 
 class CoreApp: Application() {
@@ -16,7 +17,7 @@ class CoreApp: Application() {
         configureDependencyInjection()
     }
 
-    // Place where we start the koin
+    // Start dependency injector on application first run
     private fun configureDependencyInjection() {
         startKoin(this, appModule)
     }
