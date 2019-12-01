@@ -1,11 +1,17 @@
 package com.app.gamelist.ui.main
 
+import android.view.View
 import com.app.gamelist.R
 import com.app.gamelist.ui.base.BaseActivity
+import com.app.gamelist.ui.main.adapter.GameListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity(), IMainNavigator {
+class MainActivity : BaseActivity(), IMainNavigator, GameListAdapter.CustomGameListListener {
     private val viewModel by viewModel<MainViewModel>()
+
+    private val quickSessionAdapter by lazy {
+        GameListAdapter(arrayListOf(), this)
+    }
 
     override val layoutId: Int?
         get() = R.layout.activity_main
@@ -18,5 +24,8 @@ class MainActivity : BaseActivity(), IMainNavigator {
     }
 
     override fun initListener() {
+    }
+
+    override fun onGameItemSelected(itemSession: View) {
     }
 }
