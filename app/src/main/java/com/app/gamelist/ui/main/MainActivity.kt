@@ -4,12 +4,13 @@ import android.view.View
 import com.app.gamelist.R
 import com.app.gamelist.ui.base.BaseActivity
 import com.app.gamelist.ui.main.adapter.GameListAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity(), IMainNavigator, GameListAdapter.CustomGameListListener {
     private val viewModel by viewModel<MainViewModel>()
 
-    private val quickSessionAdapter by lazy {
+    private val gameListAdapter by lazy {
         GameListAdapter(arrayListOf(), this)
     }
 
@@ -21,6 +22,17 @@ class MainActivity : BaseActivity(), IMainNavigator, GameListAdapter.CustomGameL
     }
 
     override fun initUI() {
+
+        recyclerViewGames.setHasFixedSize(true)
+        recyclerViewGames.adapter = gameListAdapter
+        var sampleData: ArrayList<String> = arrayListOf()
+        sampleData.add("")
+        sampleData.add("")
+        sampleData.add("")
+        sampleData.add("")
+        sampleData.add("")
+        gameListAdapter.addData(sampleData)
+
     }
 
     override fun initListener() {
