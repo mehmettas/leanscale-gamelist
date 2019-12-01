@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface IGameListService {
 
     @GET("games")
-    fun getAuthConstantAsync(@Query("page_size") pageSize: Int,
+    fun getAllGames(@Query("page_size") pageSize: Int,
                              @Query("page") pageNumber:Int
     ): Deferred<Response<GameListResponse>>
 }

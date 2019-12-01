@@ -1,12 +1,22 @@
 package com.app.gamelist.data.remote
 
+import com.app.gamelist.data.remote.model.gamelist.GameListResponse
 import com.app.gamelist.data.remote.network.RemoteDataException
 import com.app.gamelist.data.remote.network.ResultWrapper
+import com.app.gamelist.data.remote.service.IGameListService
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 class RemoteDataManager(
+    private val gameListService: IGameListService
     ): IRemoteDataManager {
+
+    override suspend fun getAllGames(pageSize: Int, page: Int): ResultWrapper<GameListResponse> =
+        withContext(Dispatchers.IO) {
+            resultWrapper(gameListService.getAllGames(pageSize, page))
+        }
 
     private suspend inline fun <reified T : Any> resultWrapper(request: Deferred<Response<T>>): ResultWrapper<T> {
         return try {
