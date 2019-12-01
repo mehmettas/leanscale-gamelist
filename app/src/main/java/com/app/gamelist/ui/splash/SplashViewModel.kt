@@ -10,9 +10,8 @@ class SplashViewModel(dataManager: DataManager): BaseViewModel<ISplashNavigator>
 
     // As soon as class initialized, start the timer, and do a little wait for the splash
     init {
-        object : CountDownTimer(2000, 1000) {
+        object : CountDownTimer(3000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-
             }
 
             override fun onFinish() {
