@@ -4,7 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
-import com.app.gamelist.MainActivity
+import com.app.gamelist.ui.main.MainActivity
 import com.app.gamelist.R
 import com.app.gamelist.ui.base.BaseActivity
 import com.app.gamelist.utils.kotlinextensions.launchActivity
