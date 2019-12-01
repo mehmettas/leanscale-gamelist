@@ -22,6 +22,7 @@ class MainActivity : BaseActivity(), IMainNavigator, GameListAdapter.CustomGameL
     }
 
     override fun initUI() {
+        observeViewModel()
 
         recyclerViewGames.setHasFixedSize(true)
         recyclerViewGames.adapter = gameListAdapter
@@ -32,6 +33,10 @@ class MainActivity : BaseActivity(), IMainNavigator, GameListAdapter.CustomGameL
         sampleData.add("")
         sampleData.add("")
         gameListAdapter.addData(sampleData)
+
+    }
+
+    private fun observeViewModel(){
 
     }
 
