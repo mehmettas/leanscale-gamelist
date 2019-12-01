@@ -7,6 +7,11 @@
 
     // Main
     <string name="all_games">All Games</string>
-
+    <string name="sample_game_name">CyberPunk 2077</string>
+    <string name="genres">Genres</string>
+    <string name="sample_genre">Adventure</string>
+    <string name="release_date">Release Date</string>
+    <string name="sample_date">12.01.2019</string>
+    <string name="sample_number">330</string>
 
 </resources>

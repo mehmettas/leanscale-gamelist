@@ -85,6 +85,7 @@ dependencies {
     }
 
     // 3rd Party
+    implementation 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

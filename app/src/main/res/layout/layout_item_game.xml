@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgGame"
         android:layout_width="0dp"
-        tools:src="@drawable/img_sample_game"
+        app:srcCompat="@drawable/img_sample_game"
         tools:layout_margin="20dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,5 +18,142 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_height="200dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardGameInformation"
+        app:layout_constraintStart_toStartOf="@id/imgGame"
+        app:layout_constraintBottom_toBottomOf="@id/imgGame"
+        app:layout_constraintEnd_toEndOf="@id/imgGame"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="91dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgGradient"
+            android:layout_width="match_parent"
+            android:background="@drawable/view_gradient_game_item"
+            android:elevation="-1dp"
+            android:layout_height="150dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clInformationWrapper"
+            android:layout_width="match_parent"
+            android:background="@drawable/view_radius_game_item"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icPc"
+                android:layout_width="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="12dp"
+                app:srcCompat="@drawable/ic_pc"
+                android:layout_height="12dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icPlaystation"
+                android:layout_width="12dp"
+                app:layout_constraintTop_toTopOf="@id/icPc"
+                app:layout_constraintStart_toEndOf="@id/icPc"
+                android:layout_marginStart="4dp"
+                app:srcCompat="@drawable/ic_playstation"
+                android:layout_height="12dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icXbox"
+                android:layout_width="12dp"
+                app:layout_constraintTop_toTopOf="@id/icPlaystation"
+                app:layout_constraintStart_toEndOf="@id/icPlaystation"
+                android:layout_marginStart="4dp"
+                app:srcCompat="@drawable/ic_xbox"
+                android:layout_height="12dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icApple"
+                android:layout_width="12dp"
+                app:layout_constraintTop_toTopOf="@id/icXbox"
+                app:layout_constraintStart_toEndOf="@id/icXbox"
+                android:layout_marginStart="4dp"
+                app:srcCompat="@drawable/ic_apple"
+                android:layout_height="12dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icNintendo"
+                android:layout_width="12dp"
+                app:layout_constraintTop_toTopOf="@id/icApple"
+                app:layout_constraintStart_toEndOf="@id/icApple"
+                android:layout_marginStart="4dp"
+                app:srcCompat="@drawable/ic_nintendo"
+                android:layout_height="12dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icLinux"
+                android:layout_width="12dp"
+                app:layout_constraintTop_toTopOf="@id/icNintendo"
+                app:layout_constraintStart_toEndOf="@id/icNintendo"
+                android:layout_marginStart="4dp"
+                app:srcCompat="@drawable/ic_linux"
+                android:layout_height="12dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtGameName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="31dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/arial_regular"
+                android:text="@string/sample_game_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icRecommandationLeveling"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/txtGameName"
+                app:layout_constraintTop_toTopOf="@id/txtGameName"
+                app:layout_constraintBottom_toBottomOf="@id/txtGameName"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/ic_meh"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtGenresHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="12dp"
+                android:text="@string/genres"
+                android:textColor="@color/white"
+                android:layout_marginBottom="6dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/arial_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewGenres"
+                android:layout_width="wrap_content"
+                android:layoutDirection="ltr"
+                android:visibility="visible"
+                tools:listitem="@layout/layout_item_game"
+                android:elevation="2dp"
+                tools:itemCount="2"
+                app:layout_constraintStart_toEndOf="@id/txtGenresHeader"
+                app:layout_constraintTop_toTopOf="@id/txtGenresHeader"
+                app:layout_constraintBottom_toBottomOf="@id/txtGenresHeader"
+                android:layout_height="330dp"/>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
