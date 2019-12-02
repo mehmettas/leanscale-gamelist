@@ -20,7 +20,6 @@ class MainViewModel(dataManager: DataManager): BaseViewModel<IMainNavigator>(dat
                     allGames.value = result.data
                 }
                 is ResultWrapper.Error -> {
-                    val x = 0
                 }
             }
         }

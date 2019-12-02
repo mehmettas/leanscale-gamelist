@@ -9,6 +9,9 @@ data class GameList(
     @SerializedName("id")
     var id:Int,
 
+    @SerializedName("name")
+    var gameName:String,
+
     @SerializedName("released")
     var releasedDate:String,
 
