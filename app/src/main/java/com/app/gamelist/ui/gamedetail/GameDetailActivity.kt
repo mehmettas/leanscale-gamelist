@@ -37,7 +37,7 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
         viewModel.gameDetail.observe(this, Observer {
             val gameData = it
             txtGameName.text = gameData?.gameName
-            txtDeveloperAndReleaseDate.text =  "By ${gameData!!.developers[0].name} ${gameData!!.releasedDate}"
+            txtDeveloperAndReleaseDate.text =  "By ${gameData!!.developers[0].name}, ${gameData!!.releasedDate}"
             imgGame.load(gameItem.backgroundImage)
 
             when(gameItem.topRating){
@@ -70,5 +70,8 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
     }
 
     override fun initListener() {
+        imgBack.setOnClickListener {
+            super.onBackPressed()
+        }
     }
 }
