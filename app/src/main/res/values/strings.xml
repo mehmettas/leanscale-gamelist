@@ -14,4 +14,24 @@
     <string name="sample_date">12.01.2019</string>
     <string name="sample_number">330</string>
 
+    // Detail
+    <string name="sample_provider">By Rockstar Games, 01.01.2019</string>
+    <string name="exceptional">Exceptional</string>
+    <string name="skip">Skip</string>
+    <string name="recommended">Recommended</string>
+    <string name="meh">Meh</string>
+    <string name="about">About</string>
+    <string name="sample_about">Cyberpunk 2077 is a science fiction game loosely based on the
+        role-playing game Cyberpunk 2020. Setting The game is set in
+        the year 2077 in a fictional futuristic metropolis Night City in
+        California. In the world of the game, there are developed
+        cybernetic augmentations that enhance game Cyberpunk 2020. Setting The game is set in
+        the year 2077 in a fictional futuristic metropolis Night City in
+        California. In the world of the game, there are developed
+        cybernetic augmentations that enhance</string>
+    <string name="some_screenshoot">Some Screenshots</string>
+    <string name="platforms">Platforms</string>
+
+
+
 </resources>
