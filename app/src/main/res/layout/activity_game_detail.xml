@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:elevation="2dp"
                 app:srcCompat="@drawable/img_oval"
-                android:alpha=".7"
+                android:alpha="1"
                 android:outlineProvider="none"
                 app:layout_constraintStart_toStartOf="@id/guideStart"
                 app:layout_constraintTop_toTopOf="parent"
@@ -344,6 +344,7 @@
                 app:layout_constraintStart_toStartOf="@id/guideStart"
                 android:background="@color/white"
                 android:alpha=".8"
+                android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="@id/guideEnd"
                 android:layout_width="0dp"
                 android:layout_height="1dp"/>
