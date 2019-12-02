@@ -1,5 +1,6 @@
 package com.app.gamelist.data.remote.model.gamedetail
 
+import com.app.gamelist.data.remote.model.gamedetail.developer.Developer
 import com.app.gamelist.data.remote.model.gamelist.genre.Genre
 import com.app.gamelist.data.remote.model.gamelist.platform.Platform
 import com.app.gamelist.data.remote.model.gamelist.rating.Rating
@@ -34,5 +35,8 @@ data class GameDetail(
     var genres:ArrayList<Genre>,
 
     @SerializedName("description_raw")
-    var description:String
+    var description:String,
+
+    @SerializedName("developers")
+    var developers:ArrayList<Developer>
 )
