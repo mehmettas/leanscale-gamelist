@@ -1,6 +1,7 @@
 package com.app.gamelist.data.remote
 
 import androidx.paging.PageKeyedDataSource
+import com.app.gamelist.data.remote.model.gamedetail.GameDetailResponse
 import com.app.gamelist.data.remote.model.gamelist.GameListResponse
 import com.app.gamelist.data.remote.network.RemoteDataException
 import com.app.gamelist.data.remote.network.ResultWrapper
@@ -17,6 +18,11 @@ class RemoteDataManager(
     override suspend fun getAllGames(pageSize: Int, page: Int): ResultWrapper<GameListResponse> =
         withContext(Dispatchers.IO) {
             resultWrapper(gameListService.getAllGames(pageSize, page))
+        }
+
+    override suspend fun getGameDetail(gameId: Int): ResultWrapper<GameDetailResponse> =
+        withContext(Dispatchers.IO) {
+            resultWrapper(gameListService.getGameDetail(gameId))
         }
 
     private suspend inline fun <reified T : Any> resultWrapper(request: Deferred<Response<T>>): ResultWrapper<T> {
