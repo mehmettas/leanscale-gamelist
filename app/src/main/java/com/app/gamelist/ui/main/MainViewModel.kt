@@ -14,9 +14,11 @@ class MainViewModel(dataManager: DataManager): BaseViewModel<IMainNavigator>(dat
     val allGames: MutableLiveData<GameListResponse> = MutableLiveData()
 
     fun getAllGames(pageSize: Int, page:Int) {
+        getNavigator().showLoading()
         GlobalScope.launch(Dispatchers.Main) {
             when (val result = withContext(Dispatchers.IO) { dataManager.getAllGames(pageSize,page) }) {
                 is ResultWrapper.Success -> {
+                    getNavigator().hideLoading()
                     allGames.value = result.data
                 }
                 is ResultWrapper.Error -> {
