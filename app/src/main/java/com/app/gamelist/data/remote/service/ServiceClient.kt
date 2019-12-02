@@ -27,9 +27,6 @@ object ServiceClient {
     // Create a Custom Interceptor to apply Headers application wide
     private val headerInterceptor = Interceptor { chain ->
         var request = chain.request().newBuilder()
-        request
-            .addHeader("x-device-type", Build.DEVICE)
-            .addHeader("Accept", "application/json")
 
         chain.proceed(request.build())
     }

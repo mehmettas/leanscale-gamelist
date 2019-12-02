@@ -11,15 +11,16 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel(dataManager: DataManager): BaseViewModel<IMainNavigator>(dataManager) {
-    val deviceResponse: MutableLiveData<GameListResponse> = MutableLiveData()
+    val allGames: MutableLiveData<GameListResponse> = MutableLiveData()
 
-    fun setDevice(pageSize: Int, page:Int) {
+    fun getAllGames(pageSize: Int, page:Int) {
         GlobalScope.launch(Dispatchers.Main) {
             when (val result = withContext(Dispatchers.IO) { dataManager.getAllGames(pageSize,page) }) {
                 is ResultWrapper.Success -> {
-                    deviceResponse.value = result.data
+                    allGames.value = result.data
                 }
                 is ResultWrapper.Error -> {
+                    val x = 0
                 }
             }
         }

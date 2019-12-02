@@ -1,6 +1,7 @@
 package com.app.gamelist.ui.main
 
 import android.view.View
+import androidx.lifecycle.Observer
 import com.app.gamelist.R
 import com.app.gamelist.ui.base.BaseActivity
 import com.app.gamelist.ui.main.adapter.GameListAdapter
@@ -34,9 +35,14 @@ class MainActivity : BaseActivity(), IMainNavigator, GameListAdapter.CustomGameL
         sampleData.add("")
         gameListAdapter.addData(sampleData)
 
+        viewModel.getAllGames(10,1)
+
     }
 
     private fun observeViewModel(){
+        viewModel.allGames.observe(this, Observer {
+
+        })
 
     }
 
