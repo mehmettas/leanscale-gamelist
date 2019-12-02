@@ -73,7 +73,7 @@ class GameListAdapter  (
                 listener.onGameItemSelected(itemView)
             }
 
-            // Configure child recylerView
+            // Configure child recyclerView
             val chipsLayoutManager = ChipsLayoutManager.newBuilder(context)
                 .setScrollingEnabled(true)
                 .setGravityResolver { Gravity.NO_GRAVITY }
@@ -93,12 +93,11 @@ class GameListAdapter  (
                 )
             }
 
-
         }
     }
 
     interface CustomGameListListener {
-        fun onGameItemSelected(itemSession: View)
+        fun onGameItemSelected(itemGame: View)
     }
 
 }

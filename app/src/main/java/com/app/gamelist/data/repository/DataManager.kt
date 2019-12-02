@@ -6,7 +6,7 @@ import com.app.gamelist.data.remote.network.ResultWrapper
 
 class DataManager(
     private val remoteDataManager: RemoteDataManager
-):IDataManager {
+):IDataManager{
 
     override suspend fun getAllGames(pageSize: Int, page: Int): ResultWrapper<GameListResponse> =
         remoteDataManager.getAllGames(pageSize, page)

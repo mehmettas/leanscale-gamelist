@@ -87,6 +87,9 @@ dependencies {
         exclude group: 'glide-parent'
     }
 
+    // Android
+    implementation 'android.arch.paging:runtime:1.0.1'
+
     // 3rd Party
     implementation 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'

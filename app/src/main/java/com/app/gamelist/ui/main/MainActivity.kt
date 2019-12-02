@@ -17,7 +17,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity(), IMainNavigator,
     GameListAdapter.CustomGameListListener{
-
     private val viewModel by viewModel<MainViewModel>()
     private val gameListAdapter by lazy {
         GameListAdapter(arrayListOf(), this)
@@ -39,7 +38,7 @@ class MainActivity : BaseActivity(), IMainNavigator,
         recyclerViewGames.adapter = gameListAdapter
         configureGenresRecyclerView()
 
-        viewModel.getAllGames(10,1)
+        viewModel.getAllGames(25,1)
     }
 
     private fun configureGenresRecyclerView() {

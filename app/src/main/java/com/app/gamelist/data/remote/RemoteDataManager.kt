@@ -1,5 +1,6 @@
 package com.app.gamelist.data.remote
 
+import androidx.paging.PageKeyedDataSource
 import com.app.gamelist.data.remote.model.gamelist.GameListResponse
 import com.app.gamelist.data.remote.network.RemoteDataException
 import com.app.gamelist.data.remote.network.ResultWrapper
@@ -11,7 +12,7 @@ import retrofit2.Response
 
 class RemoteDataManager(
     private val gameListService: IGameListService
-    ): IRemoteDataManager {
+    ): IRemoteDataManager{
 
     override suspend fun getAllGames(pageSize: Int, page: Int): ResultWrapper<GameListResponse> =
         withContext(Dispatchers.IO) {
