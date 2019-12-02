@@ -174,10 +174,10 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
     private fun expandableAction() {
         if (txtAboutExpandable.isExpanded()) {
             txtAboutExpandable.collapse();
-            imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_back))
+            imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_down))
         } else {
             txtAboutExpandable.expand();
-            imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_back))
+            imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_down))
         }
     }
 
