@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="0dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/img_sample_game"
+        tools:srcCompat="@drawable/img_sample_game"
         android:layout_height="300dp"/>
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -101,6 +101,21 @@
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         android:layout_width="0dp"
         android:layout_height="25dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/clOpinionsChart"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerviewGenres"
+        android:layout_marginTop="18dp"
+        app:cardCornerRadius="8dp"
+        android:layout_height="40dp">
+
+        <include layout="@layout/layout_chart"/>
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

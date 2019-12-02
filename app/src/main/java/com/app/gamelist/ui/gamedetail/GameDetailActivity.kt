@@ -1,8 +1,10 @@
 package com.app.gamelist.ui.gamedetail
 
 import android.view.Gravity
+import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import com.app.gamelist.R
+import com.app.gamelist.data.remote.model.gamedetail.GameDetail
 import com.app.gamelist.data.remote.model.gamelist.GameList
 import com.app.gamelist.ui.base.BaseActivity
 import com.app.gamelist.ui.main.adapter.ChipAdapter
@@ -11,6 +13,7 @@ import com.app.gamelist.utils.kotlinextensions.load
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_game_detail.*
+import kotlinx.android.synthetic.main.layout_chart.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
@@ -36,37 +39,68 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
     private fun observeViewModel(){
         viewModel.gameDetail.observe(this, Observer {
             val gameData = it
-            txtGameName.text = gameData?.gameName
-            txtDeveloperAndReleaseDate.text =  "By ${gameData!!.developers[0].name}, ${gameData!!.releasedDate}"
-            imgGame.load(gameItem.backgroundImage)
-
-            when(gameItem.topRating){
-                in 1..3->icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
-                4->icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
-                5->icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
-            }
-
-            val chipsLayoutManager = ChipsLayoutManager.newBuilder(this)
-                .setScrollingEnabled(true)
-                .setGravityResolver { Gravity.NO_GRAVITY }
-                .setOrientation(ChipsLayoutManager.HORIZONTAL)
-                .setRowStrategy(ChipsLayoutManager.STRATEGY_DEFAULT)
-                .build()
-
-            recyclerviewGenres.apply {
-                setHasFixedSize(true)
-                layoutManager = chipsLayoutManager
-                adapter = ChipAdapter(gameItem.genres)
-                addItemDecoration(
-                    SpacingItemDecoration(
-                        resources.getDimensionPixelOffset(R.dimen.chip_margin),
-                        resources.getDimensionPixelOffset(R.dimen.chip_margin)
-                    )
-                )
-            }
+            setContent(gameData)
         })
 
 
+    }
+
+    private fun setContent(gameData: GameDetail?) {
+        setTopViews(gameData)
+        setGenres()
+        setChartData(gameData)
+    }
+
+    private fun setChartData(gameData: GameDetail?) {
+        gameData?.ratings?.forEach {
+            var value: Float = it.ratingPercent.toFloat() / 100
+            val param = LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                value
+            )
+
+            when (it.ratingId) {
+                5 -> imgGreen.layoutParams = param
+                4 -> imgBlue.layoutParams = param
+                1 -> imgSkip.layoutParams = param
+                3 -> imgOrange.layoutParams = param
+            }
+        }
+    }
+
+    private fun setTopViews(gameData: GameDetail?) {
+        txtGameName.text = gameData?.gameName
+        txtDeveloperAndReleaseDate.text =
+            "By ${gameData!!.developers[0].name}, ${gameData!!.releasedDate}"
+        imgGame.load(gameItem.backgroundImage)
+
+        when (gameItem.topRating) {
+            in 1..3 -> icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
+            4 -> icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
+            5 -> icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
+        }
+    }
+
+    private fun setGenres() {
+        val chipsLayoutManager = ChipsLayoutManager.newBuilder(this)
+            .setScrollingEnabled(true)
+            .setGravityResolver { Gravity.NO_GRAVITY }
+            .setOrientation(ChipsLayoutManager.HORIZONTAL)
+            .setRowStrategy(ChipsLayoutManager.STRATEGY_DEFAULT)
+            .build()
+
+        recyclerviewGenres.apply {
+            setHasFixedSize(true)
+            layoutManager = chipsLayoutManager
+            adapter = ChipAdapter(gameItem.genres)
+            addItemDecoration(
+                SpacingItemDecoration(
+                    resources.getDimensionPixelOffset(R.dimen.chip_margin),
+                    resources.getDimensionPixelOffset(R.dimen.chip_margin)
+                )
+            )
+        }
     }
 
     override fun initListener() {
