@@ -1,6 +1,7 @@
 package com.app.gamelist.ui.gamedetail
 
 import android.view.Gravity
+import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import com.app.gamelist.R
@@ -103,6 +104,8 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
             4 -> icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
             5 -> icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
         }
+        txtAboutExpandable.setInterpolator(OvershootInterpolator())
+        txtAboutExpandable.text = gameData.description
     }
 
     private fun setGenres() {
@@ -129,6 +132,19 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
     override fun initListener() {
         imgBack.setOnClickListener {
             super.onBackPressed()
+        }
+
+        imgShowMoreAboutContent.setOnClickListener {
+            if (txtAboutExpandable.isExpanded())
+            {
+                txtAboutExpandable.collapse();
+                imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_down))
+            }
+            else
+            {
+                txtAboutExpandable.expand();
+                imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_back))
+            }
         }
     }
 }
