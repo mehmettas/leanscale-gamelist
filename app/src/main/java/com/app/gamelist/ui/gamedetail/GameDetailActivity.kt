@@ -49,6 +49,29 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
         setTopViews(gameData)
         setGenres()
         setChartData(gameData)
+        setRatingCountValues(gameData)
+    }
+
+    private fun setRatingCountValues(gameData: GameDetail?) {
+        var ratingException = (gameData?.ratings?.find {
+            it.ratingId == 5
+        })
+        txtExceptional.text = ratingException?.ratingCount.toString()
+
+        var ratingSkip = (gameData?.ratings?.find {
+            it.ratingId == 1
+        })
+        txtSkip.text = ratingSkip?.ratingCount.toString()
+
+        var ratingRecommended = (gameData?.ratings?.find {
+            it.ratingId == 4
+        })
+        txtRecommended.text = ratingRecommended?.ratingCount.toString()
+
+        var ratingMeh = (gameData?.ratings?.find {
+            it.ratingId == 3
+        })
+        txtMeh.text = ratingMeh?.ratingCount.toString()
     }
 
     private fun setChartData(gameData: GameDetail?) {
