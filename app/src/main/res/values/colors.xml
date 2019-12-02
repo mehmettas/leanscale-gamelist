@@ -7,4 +7,10 @@
     <color name="background_color">#010029</color>
     <color name="orange">#E3882C</color>
     <color name="white">#ffffff</color>
+
+    <color name="green">#80C33B</color>
+    <color name="red">#F63642</color>
+    <color name="blue">#5070D5</color>
+    <color name="orange_detail">#F9983B</color>
+    
 </resources>

@@ -3,8 +3,104 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/background_color"
+    android:background="@android:color/black"
     android:layout_height="match_parent"
     tools:context=".ui.gamedetail.GameDetailActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideStart"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintGuide_begin="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideEnd"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintGuide_end="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:elevation="2dp"
+        app:srcCompat="@drawable/img_oval"
+        android:alpha=".7"
+        android:outlineProvider="none"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgGame"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/img_sample_game"
+        android:layout_height="216dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgGradient"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgGame"
+        app:layout_constraintStart_toStartOf="@id/imgGame"
+        app:layout_constraintEnd_toEndOf="@id/imgGame"
+        app:srcCompat="@drawable/view_gradient_game_detail"
+        android:layout_height="126dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtGameName"
+        app:layout_constraintBottom_toTopOf="@id/txtDeveloperAndReleaseDate"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        android:layout_marginBottom="4dp"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/arial_regular"
+        android:text="@string/sample_game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icRecommendationLeveling"
+        app:layout_constraintTop_toTopOf="@id/txtGameName"
+        app:layout_constraintBottom_toBottomOf="@id/txtGameName"
+        app:layout_constraintStart_toEndOf="@id/txtGameName"
+        android:layout_marginStart="8dp"
+        app:srcCompat="@drawable/ic_meh"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtDeveloperAndReleaseDate"
+        app:layout_constraintBottom_toTopOf="@id/recyclerviewGenres"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        android:layout_marginBottom="8dp"
+        android:text="@string/sample_provider"
+        android:textSize="12sp"
+        android:alpha=".8"
+        android:textColor="@color/white"
+        android:fontFamily="@font/arial_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewGenres"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        tools:listitem="@layout/layout_item_genre"
+        tools:itemCount="3"
+        app:layout_constraintHorizontal_bias=".0"
+        app:layout_constraintBottom_toBottomOf="@id/imgGradient"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        android:layout_width="0dp"
+        android:layout_height="25dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
