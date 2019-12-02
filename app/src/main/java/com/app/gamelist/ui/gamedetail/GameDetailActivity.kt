@@ -1,6 +1,7 @@
 package com.app.gamelist.ui.gamedetail
 
 import android.view.Gravity
+import android.view.View
 import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
@@ -50,7 +51,41 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
         viewModel.gameDetail.observe(this, Observer {
             val gameData = it
             setContent(gameData)
+            setPlatformsData()
         })
+    }
+
+    private fun setPlatformsData() {
+        var platformString = ""
+        gameItem.parentPlatforms.forEach {
+            when (it.platformItem.platformId) {
+                1 -> {
+                    icPc.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                2 -> {
+                    icPlaystation.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                3 -> {
+                    icXbox.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                4 -> {
+                    icNintendo.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                5 -> {
+                    icApple.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                6 -> {
+                    icLinux.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+            }
+        }
+        txtPlatforms.text = platformString
     }
 
     private fun setContent(gameData: GameDetail?) {
@@ -58,7 +93,6 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
         setGenres()
         setChartData(gameData)
         setRatingCountValues(gameData)
-
     }
 
     private fun setRatingCountValues(gameData: GameDetail?) {

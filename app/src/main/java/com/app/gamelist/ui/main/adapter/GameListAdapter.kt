@@ -10,7 +10,6 @@ import com.app.gamelist.utils.kotlinextensions.inflate
 import com.app.gamelist.utils.kotlinextensions.load
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration
-import kotlinx.android.synthetic.main.layout_item_game.*
 import kotlinx.android.synthetic.main.layout_item_game.view.*
 
 class GameListAdapter  (

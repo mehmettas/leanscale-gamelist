@@ -338,6 +338,126 @@
                 android:layout_height="wrap_content"
                 layout="@layout/layout_screenshoots"/>
 
+            <View
+                android:id="@+id/viewSeperatorTop"
+                app:layout_constraintTop_toBottomOf="@id/layoutScreenShots"
+                app:layout_constraintStart_toStartOf="@id/guideStart"
+                android:background="@color/white"
+                android:alpha=".8"
+                app:layout_constraintEnd_toEndOf="@id/guideEnd"
+                android:layout_width="0dp"
+                android:layout_height="1dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPlatformsHeader"
+                app:layout_constraintTop_toBottomOf="@id/viewSeperatorTop"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@id/guideStart"
+                android:text="@string/platforms"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:alpha=".6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icPc"
+                android:layout_width="24dp"
+                app:layout_constraintTop_toBottomOf="@id/viewSeperatorTop"
+                app:layout_constraintEnd_toStartOf="@id/icPlaystation"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:srcCompat="@drawable/ic_pc"
+                android:layout_height="24dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icPlaystation"
+                android:layout_width="24dp"
+                app:layout_constraintTop_toBottomOf="@id/viewSeperatorTop"
+                android:layout_marginTop="12dp"
+                app:layout_goneMarginStart="12dp"
+                app:layout_constraintEnd_toStartOf="@id/icXbox"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:srcCompat="@drawable/ic_playstation"
+                android:layout_height="24dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icXbox"
+                android:layout_width="24dp"
+                app:layout_constraintTop_toBottomOf="@id/viewSeperatorTop"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@id/icApple"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:srcCompat="@drawable/ic_xbox"
+                android:layout_height="24dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icApple"
+                android:layout_width="24dp"
+                app:layout_constraintTop_toBottomOf="@id/viewSeperatorTop"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@id/icNintendo"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:srcCompat="@drawable/ic_apple"
+                android:layout_height="24dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icNintendo"
+                android:layout_width="24dp"
+                app:layout_constraintTop_toBottomOf="@id/viewSeperatorTop"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@id/icLinux"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_marginEnd="8dp"
+                app:srcCompat="@drawable/ic_nintendo"
+                android:layout_height="24dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icLinux"
+                android:layout_width="24dp"
+                app:layout_constraintTop_toBottomOf="@id/viewSeperatorTop"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="@id/guideEnd"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:srcCompat="@drawable/ic_linux"
+                android:layout_height="24dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPlatforms"
+                app:layout_constraintTop_toBottomOf="@id/txtPlatformsHeader"
+                app:layout_constraintStart_toStartOf="@id/guideStart"
+                android:layout_marginTop="18dp"
+                tools:text="PlayStation 4, Xbox One, PC"
+                android:textColor="@color/white"
+                android:fontFamily="@font/arial_regular"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:id="@+id/viewSeperatorBottom"
+                app:layout_constraintTop_toBottomOf="@+id/txtPlatforms"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@id/guideStart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="100dp"
+                android:background="@color/white"
+                android:alpha=".8"
+                app:layout_constraintEnd_toEndOf="@id/guideEnd"
+                android:layout_width="0dp"
+                android:layout_height="1dp"/>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
