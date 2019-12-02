@@ -46,6 +46,17 @@ class GameListAdapter  (
             itemView.txtReleaseDate.text = gameItem.releasedDate
             itemView.txtCount.text = gameItem.addedCount.toString()
 
+            gameItem.parentPlatforms.forEach {
+                when(it.platformItem.platformId){
+                    1->itemView.icPc.visibility = View.VISIBLE
+                    2->itemView.icPlaystation.visibility = View.VISIBLE
+                    3->itemView.icXbox.visibility = View.VISIBLE
+                    4->itemView.icNintendo.visibility = View.VISIBLE
+                    5->itemView.icApple.visibility = View.VISIBLE
+                    6->itemView.icLinux.visibility = View.VISIBLE
+                }
+            }
+
             itemView.setOnClickListener {
                 listener.onGameItemSelected(itemView)
             }
