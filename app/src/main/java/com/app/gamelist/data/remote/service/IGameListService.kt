@@ -1,6 +1,6 @@
 package com.app.gamelist.data.remote.service
 
-import com.app.gamelist.data.remote.model.gamedetail.GameDetailResponse
+import com.app.gamelist.data.remote.model.gamedetail.GameDetail
 import com.app.gamelist.data.remote.model.gamelist.GameListResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
@@ -16,6 +16,6 @@ interface IGameListService {
     ): Deferred<Response<GameListResponse>>
 
     @GET("games/{id}")
-    fun getGameDetail(@Path("id") gameId: Int): Deferred<Response<GameDetailResponse>>
+    fun getGameDetail(@Path("id") gameId: Int): Deferred<Response<GameDetail>>
 
 }

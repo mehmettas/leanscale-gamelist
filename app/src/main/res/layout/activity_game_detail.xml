@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/img_sample_game"
-        android:layout_height="216dp"/>
+        android:layout_height="300dp"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgGradient"
