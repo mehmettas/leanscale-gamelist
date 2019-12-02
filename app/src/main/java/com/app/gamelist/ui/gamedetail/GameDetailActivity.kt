@@ -54,22 +54,22 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
     }
 
     private fun setRatingCountValues(gameData: GameDetail?) {
-        var ratingException = (gameData?.ratings?.find {
+        val ratingException = (gameData?.ratings?.find {
             it.ratingId == 5
         })
         txtExceptional.text = ratingException?.ratingCount.toString()
 
-        var ratingSkip = (gameData?.ratings?.find {
+        val ratingSkip = (gameData?.ratings?.find {
             it.ratingId == 1
         })
         txtSkip.text = ratingSkip?.ratingCount.toString()
 
-        var ratingRecommended = (gameData?.ratings?.find {
+        val ratingRecommended = (gameData?.ratings?.find {
             it.ratingId == 4
         })
         txtRecommended.text = ratingRecommended?.ratingCount.toString()
 
-        var ratingMeh = (gameData?.ratings?.find {
+        val ratingMeh = (gameData?.ratings?.find {
             it.ratingId == 3
         })
         txtMeh.text = ratingMeh?.ratingCount.toString()
@@ -129,22 +129,25 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
         }
     }
 
+    private fun expandableAction() {
+        if (txtAboutExpandable.isExpanded()) {
+            txtAboutExpandable.collapse();
+            imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_back))
+        } else {
+            txtAboutExpandable.expand();
+            imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_back))
+        }
+    }
+
     override fun initListener() {
         imgBack.setOnClickListener {
             super.onBackPressed()
         }
 
         imgShowMoreAboutContent.setOnClickListener {
-            if (txtAboutExpandable.isExpanded())
-            {
-                txtAboutExpandable.collapse();
-                imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_down))
-            }
-            else
-            {
-                txtAboutExpandable.expand();
-                imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_back))
-            }
+            expandableAction()
         }
     }
+
+
 }

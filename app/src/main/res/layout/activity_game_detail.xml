@@ -315,18 +315,28 @@
                 android:layout_marginEnd="10dp"
                 app:layout_constraintStart_toStartOf="@id/guideStart"
                 app:layout_constraintEnd_toStartOf="@id/guideEnd"
-                app:animation_duration="1000"/>
+                app:animation_duration="500"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgShowMoreAboutContent"
                 app:layout_constraintBottom_toBottomOf="@id/txtAboutExpandable"
                 app:layout_constraintEnd_toEndOf="@id/txtAboutExpandable"
-                android:src="@drawable/ic_arrow_back"
+                android:src="@drawable/ic_arrow_down"
                 android:alpha=".4"
                 android:maxHeight="18dp"
                 android:maxWidth="18dp"
                 android:layout_width="18dp"
                 android:layout_height="18dp"/>
+
+            <include
+                android:id="@+id/layoutScreenShots"
+                android:layout_width="0dp"
+                android:layout_marginTop="37dp"
+                app:layout_constraintStart_toStartOf="@id/guideStart"
+                app:layout_constraintEnd_toEndOf="@id/guideEnd"
+                app:layout_constraintTop_toBottomOf="@id/txtAboutExpandable"
+                android:layout_height="wrap_content"
+                layout="@layout/layout_screenshoots"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
