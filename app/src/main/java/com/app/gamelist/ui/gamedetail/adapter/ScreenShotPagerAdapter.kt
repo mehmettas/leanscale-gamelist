@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.app.gamelist.R
+import com.app.gamelist.data.remote.model.gamelist.screenshoot.ScreenShoot
+import com.app.gamelist.utils.kotlinextensions.load
+import kotlinx.android.synthetic.main.layout_item_pager.view.*
 
 class ScreenShotPagerAdapter (
-    private var items: ArrayList<String> = arrayListOf(),
+    private var items: ArrayList<ScreenShoot> = arrayListOf(),
     private var context: Context
 ): PagerAdapter() {
 
@@ -19,7 +22,7 @@ class ScreenShotPagerAdapter (
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view: View = LayoutInflater.from(context).inflate(R.layout.layout_item_pager, null)
-
+        view.imgGame.load(items.get(position).image) // Set image
         container.addView(view)
         return view
     }

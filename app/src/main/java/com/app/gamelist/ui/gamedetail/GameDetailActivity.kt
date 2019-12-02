@@ -8,6 +8,7 @@ import com.app.gamelist.R
 import com.app.gamelist.data.remote.model.gamedetail.GameDetail
 import com.app.gamelist.data.remote.model.gamelist.GameList
 import com.app.gamelist.ui.base.BaseActivity
+import com.app.gamelist.ui.gamedetail.adapter.ScreenShotPagerAdapter
 import com.app.gamelist.ui.main.adapter.ChipAdapter
 import com.app.gamelist.utils.AppConstants.KEY_GAME_DATA
 import com.app.gamelist.utils.kotlinextensions.load
@@ -15,11 +16,13 @@ import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_game_detail.*
 import kotlinx.android.synthetic.main.layout_chart.*
+import kotlinx.android.synthetic.main.layout_screenshoots.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
     private val viewModel by viewModel<GameDetailViewModel>()
     private lateinit var gameItem:GameList
+    private var screenShotPagerAdapter:ScreenShotPagerAdapter?=null
 
     override val layoutId: Int?
         get() = R.layout.activity_game_detail
@@ -30,11 +33,17 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
 
     override fun initUI() {
         observeViewModel()
-
         if (intent.extras!=null){
             gameItem = intent.getSerializableExtra(KEY_GAME_DATA) as GameList
             viewModel.getGameDetail(gameItem.id)
+            setViewPagerScreenShoot()
         }
+    }
+
+    private fun setViewPagerScreenShoot() {
+        screenShotPagerAdapter = ScreenShotPagerAdapter(gameItem.screenShoots, this)
+        viewPagerScreenShoot.adapter = screenShotPagerAdapter
+        indicatorScreenShoot.setViewPager(viewPagerScreenShoot)
     }
 
     private fun observeViewModel(){
@@ -42,8 +51,6 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
             val gameData = it
             setContent(gameData)
         })
-
-
     }
 
     private fun setContent(gameData: GameDetail?) {
@@ -51,6 +58,7 @@ class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
         setGenres()
         setChartData(gameData)
         setRatingCountValues(gameData)
+
     }
 
     private fun setRatingCountValues(gameData: GameDetail?) {

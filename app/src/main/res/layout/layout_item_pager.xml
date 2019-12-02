@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:src="@drawable/img_sample_game"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_height="327dp"/>
+        android:layout_height="200dp"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/viewGradient"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideCenter"
         android:alpha=".8"
         android:translationZ="0dp"
-        android:elevation="2dp"
+        android:elevation="4dp"
         android:background="@drawable/view_gradient_game_detail"
         android:layout_width="0dp"
         android:layout_height="0dp"/>
