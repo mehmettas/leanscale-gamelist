@@ -147,7 +147,7 @@
                         android:layout_height="wrap_content"/>
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/icRecommandationLeveling"
+                        android:id="@+id/icRecommendationLeveling"
                         android:layout_width="30dp"
                         app:layout_constraintStart_toStartOf="@id/txtReleaseDateHeader"
                         app:layout_constraintEnd_toEndOf="@id/txtReleaseDateHeader"

@@ -23,7 +23,6 @@ class MainActivity : BaseActivity(), IMainNavigator,
         GameListAdapter(arrayListOf(), this)
     }
 
-
     private var gameListData: ArrayList<GameList>? = arrayListOf()
 
     override val layoutId: Int?

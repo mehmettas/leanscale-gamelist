@@ -62,6 +62,13 @@ class GameListAdapter  (
                 }
             }
 
+            when(gameItem.topRating){
+                in 1..3->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
+                4->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
+                5->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
+            }
+
+
             itemView.setOnClickListener {
                 listener.onGameItemSelected(itemView)
             }
