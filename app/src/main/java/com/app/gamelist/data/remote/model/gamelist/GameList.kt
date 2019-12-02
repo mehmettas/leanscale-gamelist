@@ -3,6 +3,7 @@ package com.app.gamelist.data.remote.model.gamelist
 import com.app.gamelist.data.remote.model.gamelist.genre.Genre
 import com.app.gamelist.data.remote.model.gamelist.platform.Platform
 import com.app.gamelist.data.remote.model.gamelist.rating.Rating
+import com.app.gamelist.data.remote.model.gamelist.screenshoot.ScreenShoot
 import com.google.gson.annotations.SerializedName
 
 data class GameList(
@@ -31,5 +32,8 @@ data class GameList(
     var parentPlatforms:ArrayList<Platform>,
 
     @SerializedName("genres")
-    var genres:ArrayList<Genre>
+    var genres:ArrayList<Genre>,
+
+    @SerializedName("short_screenshots")
+    var screenShoots:ArrayList<ScreenShoot>
 )
