@@ -5,6 +5,7 @@ import com.app.gamelist.data.remote.model.gamelist.genre.Genre
 import com.app.gamelist.data.remote.model.gamelist.platform.Platform
 import com.app.gamelist.data.remote.model.gamelist.rating.Rating
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class GameDetail(
     @SerializedName("id")
@@ -39,4 +40,4 @@ data class GameDetail(
 
     @SerializedName("developers")
     var developers:ArrayList<Developer>
-)
+): Serializable

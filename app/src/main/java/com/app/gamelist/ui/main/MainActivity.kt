@@ -7,8 +7,11 @@ import com.app.gamelist.R
 import com.app.gamelist.data.remote.model.gamelist.GameList
 import com.app.gamelist.data.remote.model.gamelist.genre.Genre
 import com.app.gamelist.ui.base.BaseActivity
+import com.app.gamelist.ui.gamedetail.GameDetailActivity
 import com.app.gamelist.ui.main.adapter.ChipAdapter
 import com.app.gamelist.ui.main.adapter.GameListAdapter
+import com.app.gamelist.utils.AppConstants.KEY_GAME_DATA
+import com.app.gamelist.utils.kotlinextensions.launchActivity
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
@@ -56,5 +59,7 @@ class MainActivity : BaseActivity(), IMainNavigator,
     override fun initListener() {
     }
 
-    override fun onGameItemSelected(itemSession: View) {}
+    override fun onGameItemSelected(gameItem: GameList) {
+        launchActivity<GameDetailActivity> { putExtra(KEY_GAME_DATA,gameItem) }
+    }
 }

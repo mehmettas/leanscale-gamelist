@@ -5,6 +5,7 @@ import com.app.gamelist.data.remote.model.gamelist.platform.Platform
 import com.app.gamelist.data.remote.model.gamelist.rating.Rating
 import com.app.gamelist.data.remote.model.gamelist.screenshoot.ScreenShoot
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class GameList(
     @SerializedName("id")
@@ -36,4 +37,4 @@ data class GameList(
 
     @SerializedName("short_screenshots")
     var screenShoots:ArrayList<ScreenShoot>
-)
+): Serializable

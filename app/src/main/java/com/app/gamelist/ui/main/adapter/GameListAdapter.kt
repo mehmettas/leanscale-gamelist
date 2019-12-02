@@ -70,7 +70,7 @@ class GameListAdapter  (
 
 
             itemView.setOnClickListener {
-                listener.onGameItemSelected(itemView)
+                listener.onGameItemSelected(gameItem)
             }
 
             // Configure child recyclerView
@@ -97,7 +97,7 @@ class GameListAdapter  (
     }
 
     interface CustomGameListListener {
-        fun onGameItemSelected(itemGame: View)
+        fun onGameItemSelected(gameItem: GameList)
     }
 
 }
