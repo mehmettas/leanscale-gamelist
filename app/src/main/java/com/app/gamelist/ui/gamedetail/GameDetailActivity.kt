@@ -12,6 +12,7 @@ import com.app.gamelist.ui.base.BaseActivity
 import com.app.gamelist.ui.gamedetail.adapter.ScreenShotPagerAdapter
 import com.app.gamelist.ui.main.adapter.ChipAdapter
 import com.app.gamelist.utils.AppConstants.KEY_GAME_DATA
+import com.app.gamelist.utils.kotlinextensions.expandableAction
 import com.app.gamelist.utils.kotlinextensions.load
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
 import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration
@@ -171,25 +172,13 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
         }
     }
 
-    private fun expandableAction() {
-        if (txtAboutExpandable.isExpanded()) {
-            txtAboutExpandable.collapse();
-            imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_down))
-        } else {
-            txtAboutExpandable.expand();
-            imgShowMoreAboutContent.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow_down))
-        }
-    }
-
     override fun initListener() {
         imgBack.setOnClickListener {
             super.onBackPressed()
         }
 
         imgShowMoreAboutContent.setOnClickListener {
-            expandableAction()
+            txtAboutExpandable.expandableAction(imgShowMoreAboutContent,getDrawable(R.drawable.ic_arrow_down))
         }
     }
-
-
 }
