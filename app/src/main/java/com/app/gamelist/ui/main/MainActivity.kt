@@ -14,11 +14,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity(), MainNavigator,
     GameListAdapter.CustomGameListListener{
     private val viewModel by viewModel<MainViewModel>()
+    private var gameListData: ArrayList<GameList>? = arrayListOf()
     private val gameListAdapter by lazy {
         GameListAdapter(arrayListOf(), this)
     }
-
-    private var gameListData: ArrayList<GameList>? = arrayListOf()
 
     override val layoutId: Int?
         get() = R.layout.activity_main
