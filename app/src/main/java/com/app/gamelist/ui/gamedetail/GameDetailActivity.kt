@@ -12,6 +12,16 @@ import com.app.gamelist.ui.base.BaseActivity
 import com.app.gamelist.ui.gamedetail.adapter.ScreenShotPagerAdapter
 import com.app.gamelist.ui.main.adapter.ChipAdapter
 import com.app.gamelist.utils.AppConstants.KEY_GAME_DATA
+import com.app.gamelist.utils.AppConstants.PLATFORM_APPLE
+import com.app.gamelist.utils.AppConstants.PLATFORM_LINUX
+import com.app.gamelist.utils.AppConstants.PLATFORM_NINTENDO
+import com.app.gamelist.utils.AppConstants.PLATFORM_PC
+import com.app.gamelist.utils.AppConstants.PLATFORM_PLAYSTATION
+import com.app.gamelist.utils.AppConstants.PLATFORM_XBOX
+import com.app.gamelist.utils.AppConstants.RATE_EXCEPTIONAL
+import com.app.gamelist.utils.AppConstants.RATE_MEH_HIGH
+import com.app.gamelist.utils.AppConstants.RATE_MEH_LOW
+import com.app.gamelist.utils.AppConstants.RATE_SUGGESTED
 import com.app.gamelist.utils.kotlinextensions.expandableAction
 import com.app.gamelist.utils.kotlinextensions.load
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
@@ -60,27 +70,27 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
         var platformString = ""
         gameItem.parentPlatforms.forEach {
             when (it.platformItem.platformId) {
-                1 -> {
+                PLATFORM_PC -> {
                     icPc.visibility = View.VISIBLE
                     platformString+="${it.platformItem.platformName}, "
                 }
-                2 -> {
+                PLATFORM_PLAYSTATION -> {
                     icPlaystation.visibility = View.VISIBLE
                     platformString+="${it.platformItem.platformName}, "
                 }
-                3 -> {
+                PLATFORM_XBOX -> {
                     icXbox.visibility = View.VISIBLE
                     platformString+="${it.platformItem.platformName}, "
                 }
-                4 -> {
+                PLATFORM_NINTENDO -> {
                     icNintendo.visibility = View.VISIBLE
                     platformString+="${it.platformItem.platformName}, "
                 }
-                5 -> {
+                PLATFORM_APPLE -> {
                     icApple.visibility = View.VISIBLE
                     platformString+="${it.platformItem.platformName}, "
                 }
-                6 -> {
+                PLATFORM_LINUX -> {
                     icLinux.visibility = View.VISIBLE
                     platformString+="${it.platformItem.platformName}, "
                 }
@@ -98,29 +108,29 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
 
     private fun setRatingCountValues(gameData: GameDetail?) {
         val ratingException = (gameData?.ratings?.find {
-            it.ratingId == 5
+            it.ratingId == RATE_EXCEPTIONAL
         })
         txtExceptional.text = ratingException?.ratingCount.toString()
 
         val ratingSkip = (gameData?.ratings?.find {
-            it.ratingId == 1
+            it.ratingId == RATE_MEH_LOW
         })
         txtSkip.text = ratingSkip?.ratingCount.toString()
 
         val ratingRecommended = (gameData?.ratings?.find {
-            it.ratingId == 4
+            it.ratingId == RATE_SUGGESTED
         })
         txtRecommended.text = ratingRecommended?.ratingCount.toString()
 
         val ratingMeh = (gameData?.ratings?.find {
-            it.ratingId == 3
+            it.ratingId == RATE_MEH_HIGH
         })
         txtMeh.text = ratingMeh?.ratingCount.toString()
     }
 
     private fun setChartData(gameData: GameDetail?) {
         gameData?.ratings?.forEach {
-            var value: Float = it.ratingPercent.toFloat() / 100
+            val value: Float = it.ratingPercent.toFloat() / 100
             val param = LinearLayout.LayoutParams(
                 0,
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -128,10 +138,10 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
             )
 
             when (it.ratingId) {
-                5 -> imgGreen.layoutParams = param
-                4 -> imgBlue.layoutParams = param
-                1 -> imgSkip.layoutParams = param
-                3 -> imgOrange.layoutParams = param
+                RATE_EXCEPTIONAL -> imgGreen.layoutParams = param
+                RATE_SUGGESTED -> imgBlue.layoutParams = param
+                RATE_MEH_LOW -> imgSkip.layoutParams = param
+                RATE_MEH_HIGH -> imgOrange.layoutParams = param
             }
         }
     }
@@ -143,9 +153,9 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
         imgGame.load(gameItem.backgroundImage)
 
         when (gameItem.topRating) {
-            in 1..3 -> icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
-            4 -> icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
-            5 -> icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
+            in RATE_MEH_LOW..RATE_MEH_HIGH -> icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
+            RATE_SUGGESTED -> icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
+            RATE_EXCEPTIONAL -> icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
         }
         txtAboutExpandable.setInterpolator(OvershootInterpolator())
         txtAboutExpandable.text = gameData.description
