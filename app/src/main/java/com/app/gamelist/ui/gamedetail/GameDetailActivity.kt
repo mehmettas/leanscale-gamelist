@@ -53,6 +53,13 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
         }
     }
 
+    private fun setContent(gameData: GameDetail?) {
+        setTopViews(gameData)
+        setGenres()
+        setChartData(gameData)
+        setRatingCountValues(gameData)
+    }
+
     private fun setViewPagerScreenShoot() {
         screenShotPagerAdapter = ScreenShotPagerAdapter(gameItem.screenShoots, this)
         viewPagerScreenShoot.adapter = screenShotPagerAdapter
@@ -65,46 +72,6 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
             setContent(gameData)
             setPlatformsData()
         })
-    }
-
-    private fun setPlatformsData() {
-        var platformString = ""
-        gameItem.parentPlatforms.forEach {
-            when (it.platformItem.platformId) {
-                PLATFORM_PC -> {
-                    icPc.visibility = View.VISIBLE
-                    platformString+="${it.platformItem.platformName}, "
-                }
-                PLATFORM_PLAYSTATION -> {
-                    icPlaystation.visibility = View.VISIBLE
-                    platformString+="${it.platformItem.platformName}, "
-                }
-                PLATFORM_XBOX -> {
-                    icXbox.visibility = View.VISIBLE
-                    platformString+="${it.platformItem.platformName}, "
-                }
-                PLATFORM_NINTENDO -> {
-                    icNintendo.visibility = View.VISIBLE
-                    platformString+="${it.platformItem.platformName}, "
-                }
-                PLATFORM_APPLE -> {
-                    icApple.visibility = View.VISIBLE
-                    platformString+="${it.platformItem.platformName}, "
-                }
-                PLATFORM_LINUX -> {
-                    icLinux.visibility = View.VISIBLE
-                    platformString+="${it.platformItem.platformName}, "
-                }
-            }
-        }
-        txtPlatforms.text = platformString
-    }
-
-    private fun setContent(gameData: GameDetail?) {
-        setTopViews(gameData)
-        setGenres()
-        setChartData(gameData)
-        setRatingCountValues(gameData)
     }
 
     private fun setRatingCountValues(gameData: GameDetail?) {
@@ -186,5 +153,38 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
         imgShowMoreAboutContent.setOnClickListener {
             txtAboutExpandable.expandableAction(imgShowMoreAboutContent,getDrawable(R.drawable.ic_arrow_down))
         }
+    }
+
+    private fun setPlatformsData() {
+        var platformString = ""
+        gameItem.parentPlatforms.forEach {
+            when (it.platformItem.platformId) {
+                PLATFORM_PC -> {
+                    icPc.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                PLATFORM_PLAYSTATION -> {
+                    icPlaystation.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                PLATFORM_XBOX -> {
+                    icXbox.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                PLATFORM_NINTENDO -> {
+                    icNintendo.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                PLATFORM_APPLE -> {
+                    icApple.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+                PLATFORM_LINUX -> {
+                    icLinux.visibility = View.VISIBLE
+                    platformString+="${it.platformItem.platformName}, "
+                }
+            }
+        }
+        txtPlatforms.text = platformString
     }
 }

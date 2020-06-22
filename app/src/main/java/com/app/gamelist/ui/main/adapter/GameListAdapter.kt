@@ -6,16 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.gamelist.R
 import com.app.gamelist.data.remote.model.gamelist.GameList
-import com.app.gamelist.utils.AppConstants.PLATFORM_APPLE
-import com.app.gamelist.utils.AppConstants.PLATFORM_LINUX
-import com.app.gamelist.utils.AppConstants.PLATFORM_NINTENDO
-import com.app.gamelist.utils.AppConstants.PLATFORM_PC
-import com.app.gamelist.utils.AppConstants.PLATFORM_PLAYSTATION
-import com.app.gamelist.utils.AppConstants.PLATFORM_XBOX
-import com.app.gamelist.utils.AppConstants.RATE_EXCEPTIONAL
-import com.app.gamelist.utils.AppConstants.RATE_MEH_HIGH
-import com.app.gamelist.utils.AppConstants.RATE_MEH_LOW
-import com.app.gamelist.utils.AppConstants.RATE_SUGGESTED
+import com.app.gamelist.utils.kotlinextensions.configurePlatformFigures
 import com.app.gamelist.utils.kotlinextensions.configureRatingFigures
 import com.app.gamelist.utils.kotlinextensions.inflate
 import com.app.gamelist.utils.kotlinextensions.load
@@ -60,17 +51,7 @@ class GameListAdapter  (
             itemView.txtGameName.text = gameItem.gameName
             itemView.txtReleaseDate.text = gameItem.releasedDate
             itemView.txtCount.text = gameItem.addedCount.toString()
-
-            gameItem.parentPlatforms.forEach {
-                when(it.platformItem.platformId){
-                    PLATFORM_PC->itemView.icPc.visibility = View.VISIBLE
-                    PLATFORM_PLAYSTATION->itemView.icPlaystation.visibility = View.VISIBLE
-                    PLATFORM_XBOX->itemView.icXbox.visibility = View.VISIBLE
-                    PLATFORM_NINTENDO->itemView.icNintendo.visibility = View.VISIBLE
-                    PLATFORM_APPLE->itemView.icApple.visibility = View.VISIBLE
-                    PLATFORM_LINUX->itemView.icLinux.visibility = View.VISIBLE
-                }
-            }
+            itemView.configurePlatformFigures(gameItem)
             itemView.icRecommendationLeveling.configureRatingFigures(gameItem)
             itemView.setOnClickListener {
                 listener.onGameItemSelected(gameItem)
