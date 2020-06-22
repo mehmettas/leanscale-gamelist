@@ -40,15 +40,6 @@ abstract class BaseActivity : AppCompatActivity(), BaseNavigator {
         initNavigator()
         initUI()
         initListener()
-        //invisibleStatusBar()
-    }
-
-    private fun invisibleStatusBar() {
-        window.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            statusBarColor = Color.TRANSPARENT
-        }
     }
 
     override fun showLoading() {
@@ -82,6 +73,27 @@ abstract class BaseActivity : AppCompatActivity(), BaseNavigator {
         })
     }
 
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        if (ev.action == MotionEvent.ACTION_DOWN) {
+            val v = currentFocus
+            if (v is EditText) {
+                val outR = Rect()
+                v.getGlobalVisibleRect(outR)
+                val isKeyboardOpen = !outR.contains(ev.rawX.toInt(), ev.rawY.toInt())
+                if (isKeyboardOpen) {
+                    print("Entro al IF")
+                    v.clearFocus()
+                    val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.windowToken, 0)
+                }
+
+                v.isCursorVisible = (!isKeyboardOpen)
+
+            }
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
     open fun overridePendingTransitionExit() {
         if (doNotAnimateExit) {
             return
@@ -106,26 +118,5 @@ abstract class BaseActivity : AppCompatActivity(), BaseNavigator {
     override fun finish() {
         super.finish()
         overridePendingTransitionExit()
-    }
-
-    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        if (ev.action == MotionEvent.ACTION_DOWN) {
-            val v = currentFocus
-            if (v is EditText) {
-                val outR = Rect()
-                v.getGlobalVisibleRect(outR)
-                val isKeyboardOpen = !outR.contains(ev.rawX.toInt(), ev.rawY.toInt())
-                if (isKeyboardOpen) {
-                    print("Entro al IF")
-                    v.clearFocus()
-                    val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(v.windowToken, 0)
-                }
-
-                v.isCursorVisible = (!isKeyboardOpen)
-
-            }
-        }
-        return super.dispatchTouchEvent(ev)
     }
 }

@@ -1,6 +1,5 @@
 package com.app.gamelist.data.remote.model.gamelist.rating
 
-import com.app.gamelist.data.remote.model.gamelist.platform.Platform
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 

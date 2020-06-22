@@ -16,12 +16,12 @@ class AppRemoteDataManager(
 
     override suspend fun getAllGames(pageSize: Int, page: Int): ResultWrapper<GameListResponse> =
         withContext(Dispatchers.IO) {
-            resultWrapper(gameListService.getAllGames(pageSize, page))
+            resultWrapper(gameListService.getAllGamesAsync(pageSize, page))
         }
 
     override suspend fun getGameDetail(gameId: Int): ResultWrapper<GameDetail> =
         withContext(Dispatchers.IO) {
-            resultWrapper(gameListService.getGameDetail(gameId))
+            resultWrapper(gameListService.getGameDetailAsync(gameId))
         }
 
     private suspend inline fun <reified T : Any> resultWrapper(request: Deferred<Response<T>>): ResultWrapper<T> {

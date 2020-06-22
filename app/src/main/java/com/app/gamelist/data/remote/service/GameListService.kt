@@ -11,11 +11,11 @@ import retrofit2.http.Query
 interface GameListService {
 
     @GET("games")
-    fun getAllGames(@Query("page_size") pageSize: Int,
-                    @Query("page") pageNumber:Int
+    fun getAllGamesAsync(@Query("page_size") pageSize: Int,
+                         @Query("page") pageNumber:Int
     ): Deferred<Response<GameListResponse>>
 
     @GET("games/{id}")
-    fun getGameDetail(@Path("id") gameId: Int): Deferred<Response<GameDetail>>
+    fun getGameDetailAsync(@Path("id") gameId: Int): Deferred<Response<GameDetail>>
 
 }
