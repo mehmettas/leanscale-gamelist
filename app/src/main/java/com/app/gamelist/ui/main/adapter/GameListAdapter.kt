@@ -6,6 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.gamelist.R
 import com.app.gamelist.data.remote.model.gamelist.GameList
+import com.app.gamelist.utils.AppConstants.PLATFORM_APPLE
+import com.app.gamelist.utils.AppConstants.PLATFORM_LINUX
+import com.app.gamelist.utils.AppConstants.PLATFORM_NINTENDO
+import com.app.gamelist.utils.AppConstants.PLATFORM_PC
+import com.app.gamelist.utils.AppConstants.PLATFORM_PLAYSTATION
+import com.app.gamelist.utils.AppConstants.PLATFORM_XBOX
+import com.app.gamelist.utils.AppConstants.RATE_EXCEPTIONAL
+import com.app.gamelist.utils.AppConstants.RATE_MEH_HIGH
+import com.app.gamelist.utils.AppConstants.RATE_MEH_LOW
+import com.app.gamelist.utils.AppConstants.RATE_SUGGESTED
 import com.app.gamelist.utils.kotlinextensions.inflate
 import com.app.gamelist.utils.kotlinextensions.load
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
@@ -52,19 +62,19 @@ class GameListAdapter  (
 
             gameItem.parentPlatforms.forEach {
                 when(it.platformItem.platformId){
-                    1->itemView.icPc.visibility = View.VISIBLE
-                    2->itemView.icPlaystation.visibility = View.VISIBLE
-                    3->itemView.icXbox.visibility = View.VISIBLE
-                    4->itemView.icNintendo.visibility = View.VISIBLE
-                    5->itemView.icApple.visibility = View.VISIBLE
-                    6->itemView.icLinux.visibility = View.VISIBLE
+                    PLATFORM_PC->itemView.icPc.visibility = View.VISIBLE
+                    PLATFORM_PLAYSTATION->itemView.icPlaystation.visibility = View.VISIBLE
+                    PLATFORM_XBOX->itemView.icXbox.visibility = View.VISIBLE
+                    PLATFORM_NINTENDO->itemView.icNintendo.visibility = View.VISIBLE
+                    PLATFORM_APPLE->itemView.icApple.visibility = View.VISIBLE
+                    PLATFORM_LINUX->itemView.icLinux.visibility = View.VISIBLE
                 }
             }
 
             when(gameItem.topRating){
-                in 1..3->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
-                4->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
-                5->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
+                in RATE_MEH_LOW..RATE_MEH_HIGH->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
+                RATE_SUGGESTED->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
+                RATE_EXCEPTIONAL->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
             }
 
 
