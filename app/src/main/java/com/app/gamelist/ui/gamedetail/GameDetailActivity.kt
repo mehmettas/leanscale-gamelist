@@ -22,6 +22,7 @@ import com.app.gamelist.utils.AppConstants.RATE_EXCEPTIONAL
 import com.app.gamelist.utils.AppConstants.RATE_MEH_HIGH
 import com.app.gamelist.utils.AppConstants.RATE_MEH_LOW
 import com.app.gamelist.utils.AppConstants.RATE_SUGGESTED
+import com.app.gamelist.utils.kotlinextensions.configureRatingFigures
 import com.app.gamelist.utils.kotlinextensions.expandableAction
 import com.app.gamelist.utils.kotlinextensions.load
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
@@ -151,12 +152,7 @@ class GameDetailActivity : BaseActivity(), GameDetailNavigator {
         txtDeveloperAndReleaseDate.text =
             "By ${gameData!!.developers[0].name}, ${gameData!!.releasedDate}"
         imgGame.load(gameItem.backgroundImage)
-
-        when (gameItem.topRating) {
-            in RATE_MEH_LOW..RATE_MEH_HIGH -> icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
-            RATE_SUGGESTED -> icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
-            RATE_EXCEPTIONAL -> icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
-        }
+        icRecommendationLeveling.configureRatingFigures(gameItem)
         txtAboutExpandable.setInterpolator(OvershootInterpolator())
         txtAboutExpandable.text = gameData.description
     }

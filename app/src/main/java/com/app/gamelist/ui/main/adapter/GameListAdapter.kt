@@ -16,6 +16,7 @@ import com.app.gamelist.utils.AppConstants.RATE_EXCEPTIONAL
 import com.app.gamelist.utils.AppConstants.RATE_MEH_HIGH
 import com.app.gamelist.utils.AppConstants.RATE_MEH_LOW
 import com.app.gamelist.utils.AppConstants.RATE_SUGGESTED
+import com.app.gamelist.utils.kotlinextensions.configureRatingFigures
 import com.app.gamelist.utils.kotlinextensions.inflate
 import com.app.gamelist.utils.kotlinextensions.load
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
@@ -70,14 +71,7 @@ class GameListAdapter  (
                     PLATFORM_LINUX->itemView.icLinux.visibility = View.VISIBLE
                 }
             }
-
-            when(gameItem.topRating){
-                in RATE_MEH_LOW..RATE_MEH_HIGH->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_meh)
-                RATE_SUGGESTED->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_suggested)
-                RATE_EXCEPTIONAL->itemView.icRecommendationLeveling.setImageResource(R.drawable.ic_exceptional)
-            }
-
-
+            itemView.icRecommendationLeveling.configureRatingFigures(gameItem)
             itemView.setOnClickListener {
                 listener.onGameItemSelected(gameItem)
             }
