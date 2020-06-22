@@ -1,6 +1,7 @@
 package com.app.gamelist.ui.gamedetail
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.app.gamelist.data.remote.model.gamedetail.GameDetail
 import com.app.gamelist.data.remote.network.ResultWrapper
 import com.app.gamelist.data.repository.AppDataManager
@@ -15,7 +16,7 @@ class GameDetailViewModel(appDataManager: AppDataManager): BaseViewModel<GameDet
 
     fun getGameDetail(pageId:Int) {
         getNavigator().showLoading()
-        GlobalScope.launch(Dispatchers.Main) {
+        viewModelScope.launch {
             when (val result = withContext(Dispatchers.IO) { appDataManager.getGameDetail(pageId) }) {
                 is ResultWrapper.Success -> {
                     getNavigator().hideLoading()
