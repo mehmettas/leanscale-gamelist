@@ -29,17 +29,11 @@ class MainActivity : BaseActivity(), MainNavigator,
 
     override fun initUI() {
         observeViewModel()
-
         recyclerViewGames.setHasFixedSize(true)
         recyclerViewGames.adapter = gameListAdapter
-        configureGenresRecyclerView()
-
         viewModel.getAllGames(25,1)
     }
 
-    private fun configureGenresRecyclerView() {
-
-    }
 
     private fun observeViewModel(){
         viewModel.allGames.observe(this, Observer {
