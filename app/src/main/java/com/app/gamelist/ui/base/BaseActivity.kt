@@ -2,6 +2,7 @@ package com.app.gamelist.ui.base
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
@@ -24,6 +25,8 @@ abstract class BaseActivity : AppCompatActivity(), BaseNavigator {
     protected abstract fun initUI()
 
     protected abstract fun initListener()
+
+    private var doNotAnimateExit = false
 
     private val dialog: AlertDialog by lazy {
         LoadingDialog.Builder().setContext(this)
@@ -77,6 +80,32 @@ abstract class BaseActivity : AppCompatActivity(), BaseNavigator {
             }
 
         })
+    }
+
+    open fun overridePendingTransitionExit() {
+        if (doNotAnimateExit) {
+            return
+        }
+        overridePendingTransition(R.anim.left_to_right_in, R.anim.left_to_right_exit)
+    }
+
+    open fun overridePendingTransitionEnter() {
+        overridePendingTransition(R.anim.right_to_left_in, R.anim.right_to_left_exit)
+    }
+
+    override fun startActivity(intent: Intent?) {
+        super.startActivity(intent)
+        overridePendingTransitionEnter()
+    }
+
+    override fun startActivityForResult(intent: Intent?, requestCode: Int) {
+        super.startActivityForResult(intent, requestCode)
+        overridePendingTransitionEnter()
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransitionExit()
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
