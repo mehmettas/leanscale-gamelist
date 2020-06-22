@@ -15,7 +15,7 @@ import com.app.gamelist.R
 import com.app.gamelist.utils.DialogUtils
 import com.app.gamelist.utils.customscreens.LoadingDialog
 
-abstract class BaseActivity : AppCompatActivity(), IBaseNavigator {
+abstract class BaseActivity : AppCompatActivity(), BaseNavigator {
     @get:LayoutRes
     protected abstract val layoutId: Int?
 

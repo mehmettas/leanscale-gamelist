@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.layout_chart.*
 import kotlinx.android.synthetic.main.layout_screenshoots.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class GameDetailActivity : BaseActivity(), IGameDetailNavigator {
+class GameDetailActivity : BaseActivity(), GameDetailNavigator {
     private val viewModel by viewModel<GameDetailViewModel>()
     private lateinit var gameItem:GameList
     private var screenShotPagerAdapter:ScreenShotPagerAdapter?=null

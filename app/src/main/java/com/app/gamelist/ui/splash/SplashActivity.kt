@@ -11,7 +11,7 @@ import com.app.gamelist.utils.kotlinextensions.launchActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SplashActivity : BaseActivity(), ISplashNavigator {
+class SplashActivity : BaseActivity(), SplashNavigator {
     private val viewModel by viewModel<SplashViewModel>()
 
     override val layoutId: Int?

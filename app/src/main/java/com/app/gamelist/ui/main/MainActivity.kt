@@ -1,24 +1,17 @@
 package com.app.gamelist.ui.main
 
-import android.view.Gravity
-import android.view.View
 import androidx.lifecycle.Observer
 import com.app.gamelist.R
 import com.app.gamelist.data.remote.model.gamelist.GameList
-import com.app.gamelist.data.remote.model.gamelist.genre.Genre
 import com.app.gamelist.ui.base.BaseActivity
 import com.app.gamelist.ui.gamedetail.GameDetailActivity
-import com.app.gamelist.ui.main.adapter.ChipAdapter
 import com.app.gamelist.ui.main.adapter.GameListAdapter
 import com.app.gamelist.utils.AppConstants.KEY_GAME_DATA
 import com.app.gamelist.utils.kotlinextensions.launchActivity
-import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
-import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_item_game.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity(), IMainNavigator,
+class MainActivity : BaseActivity(), MainNavigator,
     GameListAdapter.CustomGameListListener{
     private val viewModel by viewModel<MainViewModel>()
     private val gameListAdapter by lazy {

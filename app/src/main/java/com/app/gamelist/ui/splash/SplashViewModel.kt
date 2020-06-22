@@ -2,10 +2,10 @@ package com.app.gamelist.ui.splash
 
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
-import com.app.gamelist.data.repository.DataManager
+import com.app.gamelist.data.repository.AppDataManager
 import com.app.gamelist.ui.base.BaseViewModel
 
-class SplashViewModel(dataManager: DataManager): BaseViewModel<ISplashNavigator>(dataManager) {
+class SplashViewModel(appDataManager: AppDataManager): BaseViewModel<SplashNavigator>(appDataManager) {
     val isFinished = MutableLiveData<Boolean>()
 
     // As soon as class initialized, start the timer, and do a little wait for the splash

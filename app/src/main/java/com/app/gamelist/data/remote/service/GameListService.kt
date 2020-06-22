@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface IGameListService {
+interface GameListService {
 
     @GET("games")
     fun getAllGames(@Query("page_size") pageSize: Int,

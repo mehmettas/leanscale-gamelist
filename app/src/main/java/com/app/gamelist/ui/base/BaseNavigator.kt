@@ -1,6 +1,6 @@
 package com.app.gamelist.ui.base
 
-interface IBaseNavigator {
+interface BaseNavigator {
     fun showLoading()
 
     fun hideLoading()

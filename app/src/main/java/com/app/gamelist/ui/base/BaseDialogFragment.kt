@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.DialogFragment
 
-abstract class BaseDialogFragment : DialogFragment(), IBaseNavigator {
+abstract class BaseDialogFragment : DialogFragment(), BaseNavigator {
     @get:LayoutRes
     protected abstract val layoutId: Int
 
