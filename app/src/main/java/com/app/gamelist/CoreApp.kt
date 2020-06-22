@@ -3,7 +3,10 @@ package com.app.gamelist
 import android.app.Application
 import android.content.Context
 import com.app.gamelist.di.appModule
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 class CoreApp: Application() {
 
@@ -19,7 +22,11 @@ class CoreApp: Application() {
 
     // Start dependency injector on application first run
     private fun configureDependencyInjection() {
-        startKoin(this, appModule)
+        startKoin {
+            androidLogger(if (BuildConfig.DEBUG) Level.DEBUG else Level.INFO)
+            androidContext(this@CoreApp)
+            modules(appModule)
+        }
     }
 
 }
